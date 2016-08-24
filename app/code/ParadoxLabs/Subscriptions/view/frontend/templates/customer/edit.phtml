@@ -1,0 +1,44 @@
+<?php /** @var \ParadoxLabs\Subscriptions\Block\Customer\Edit $block */ ?>
+<?php // @codingStandardsIgnoreFile ?>
+<?php $activeCard = $block->getCard(); ?>
+
+<p class="change-notice message warning">
+    <?php echo __('Any changes to the settings below will take effect with the next billing.'); ?>
+</p>
+
+<form class="form-subscription-edit form-address-edit" action="<?php echo $block->getSaveUrl() ?>" method="post" id="form-validate" enctype="multipart/form-data" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"subscriptionsEdit":{},"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php echo __('Payment Information') ?></span></legend><br>
+        <?php echo $block->getBlockHtml('formkey')?>
+        <div class="field card required">
+            <label class="label" for="tokenbase_id"><span><?php echo __('Payment Account') ?></span></label>
+            <div class="control">
+                <select name="tokenbase_id" id="tokenbase_id" class="validate-select control-select">
+                    <?php /** @var \ParadoxLabs\TokenBase\Model\Card $card */ ?>
+                    <?php foreach ($block->getCustomerCards() as $card): ?>
+                        <option value="<?php echo $card->getHash(); ?>"<?php if ($card->getId() == $activeCard->getId()): ?> selected="selected"<?php endif; ?> title="<?php echo __('Payment Account') ?>"><?php echo $card->getLabel(); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="field">
+            <p>
+                <?php echo __('To change your payment options, please go to <a href="%1" target="_blank">My Payment Data</a>.', $block->getUrl('customer/paymentinfo')); ?>
+            </p>
+        </div>
+    </fieldset>
+    <?php if ($block->getSubscription()->getQuote()->getIsVirtual() !== true): ?>
+        <?php echo $block->getChildHtml('subscriptions_edit_shipping'); ?>
+    <?php endif; ?>
+    <?php echo $block->getChildHtml('additional'); ?>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action save primary" title="<?php echo __('Save Subscription') ?>">
+                <span><?php echo __('Save Subscription') ?></span>
+            </button>
+        </div>
+        <div class="secondary">
+            <a class="action back" href="<?php echo $block->escapeUrl($block->getBackUrl()) ?>"><span><?php echo __('Go back') ?></span></a>
+        </div>
+    </div>
+</form>

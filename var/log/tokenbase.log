@@ -1,0 +1,245 @@
+[2016-08-22 10:10:04] authnetcim [115.112.148.148]: assignData()  
+[2016-08-22 10:10:04] authnetcim [115.112.148.148]: validate()  
+[2016-08-22 10:10:05] authnetcim [115.112.148.148]: validate()  
+[2016-08-22 10:10:05] authnetcim [115.112.148.148]: authorize(Magento\Sales\Model\Order\Payment\Interceptor , 35)  
+[2016-08-22 10:10:05] authnetcim [115.112.148.148]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 10:10:05] authnetcim [115.112.148.148]: _createCustomerPaymentProfile(true) (profile_id NULL, payment_id NULL)  
+[2016-08-22 10:10:05] authnetcim [115.112.148.148]: setCard()  
+[2016-08-22 10:10:07] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-22 10:10:07] authnetcim [115.112.148.148]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 10:10:08] authnetcim [115.112.148.148]: {"response_code":1,"response_subcode":"","response_reason_code":0,"response_reason_text":"","approval_code":"OQJJY9","auth_code":"OQJJY9","avs_result_code":"Y","transaction_id":"40002182567","reference_transaction_id":"","invoice_number":"000000001","description":"","amount":35,"method":"CC","transaction_type":"auth_only","customer_id":"1","md5_hash":"68D9C62D888C43E36F8FBCBAEC187EBF","card_code_response_code":"P","cavv_response_code":"2","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":false}  
+[2016-08-22 11:49:17] authnetcim [115.112.148.148]: assignData()  
+[2016-08-22 11:49:17] authnetcim [115.112.148.148]: loadAndSetCard(add1ab8c062f92ee11404203b06a7778d4e0036d, true)  
+[2016-08-22 11:49:17] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-22 11:49:17] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-22 11:49:17] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-22 11:49:17] authnetcim [115.112.148.148]: authorize(Magento\Sales\Model\Order\Payment\Interceptor , 25)  
+[2016-08-22 11:49:17] authnetcim [115.112.148.148]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 11:49:17] authnetcim [115.112.148.148]: loadAndSetCard(1, false)  
+[2016-08-22 11:49:17] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-22 11:49:17] authnetcim [115.112.148.148]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 11:49:18] authnetcim [115.112.148.148]: Transaction error: This transaction has been declined.
+{"response_code":2,"response_subcode":"","response_reason_code":2,"response_reason_text":"This transaction has been declined.","approval_code":"","auth_code":"","avs_result_code":"Y","transaction_id":"40002185712","reference_transaction_id":"","invoice_number":"000000002","description":"","amount":25,"method":"CC","transaction_type":"auth_only","customer_id":"1","md5_hash":"A2CED04AD469357AB36764072568CF1D","card_code_response_code":"P","cavv_response_code":"2","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":true}
+REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>authOnlyTransaction</transactionType>
+    <amount>25.00</amount>
+    <profile>
+      <customerProfileId>1500424958</customerProfileId>
+      <paymentProfile>
+        <paymentProfileId>1500284065</paymentProfileId>
+      </paymentProfile>
+    </profile>
+    <solution>
+      <id>A1000133</id>
+    </solution>
+    <order>
+      <invoiceNumber>000000002</invoiceNumber>
+      <description></description>
+    </order>
+    <lineItems>
+      <lineItem>
+        <itemId>Subscription test</itemId>
+        <name>Subscription test</name>
+        <quantity>1.00</quantity>
+        <unitPrice>20.00</unitPrice>
+      </lineItem>
+    </lineItems>
+    <shipping>
+      <amount>5.00</amount>
+      <name></name>
+      <description></description>
+    </shipping>
+    <customer>
+      <id>1</id>
+      <email>ram10raj@gmail.com</email>
+    </customer>
+    <shipTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21  Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+    </shipTo>
+    <customerIP>115.112.148.148</customerIP>
+    <transactionSettings>
+      <setting>
+        <settingName>allowPartialAuth</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+      <setting>
+        <settingName>duplicateWindow</settingName>
+        <settingValue>15</settingValue>
+      </setting>
+      <setting>
+        <settingName>emailCustomer</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+    </transactionSettings>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>2</responseCode><authCode /><avsResultCode>Y</avsResultCode><cvvResultCode>P</cvvResultCode><cavvResultCode>2</cavvResultCode><transId>40002185712</transId><refTransID /><transHash>A2CED04AD469357AB36764072568CF1D</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><errors><error><errorCode>2</errorCode><errorText>This transaction has been declined.</errorText></error></errors><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-22 11:49:28] authnetcim [115.112.148.148]: assignData()  
+[2016-08-22 11:49:28] authnetcim [115.112.148.148]: loadAndSetCard(add1ab8c062f92ee11404203b06a7778d4e0036d, true)  
+[2016-08-22 11:49:28] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-22 11:49:28] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-22 11:49:28] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-22 11:49:28] authnetcim [115.112.148.148]: authorize(Magento\Sales\Model\Order\Payment\Interceptor , 25)  
+[2016-08-22 11:49:28] authnetcim [115.112.148.148]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 11:49:28] authnetcim [115.112.148.148]: loadAndSetCard(1, false)  
+[2016-08-22 11:49:28] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-22 11:49:28] authnetcim [115.112.148.148]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 11:49:29] authnetcim [115.112.148.148]: Transaction error: An error occurred during processing. Call Merchant Service Provider.
+{"response_code":2,"response_subcode":"","response_reason_code":35,"response_reason_text":"An error occurred during processing. Call Merchant Service Provider.","approval_code":"","auth_code":"","avs_result_code":"Y","transaction_id":"40002185713","reference_transaction_id":"","invoice_number":"000000003","description":"","amount":25,"method":"CC","transaction_type":"auth_only","customer_id":"1","md5_hash":"60685C6A1D2FC90BF9E218E5797574A5","card_code_response_code":"P","cavv_response_code":"2","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":true}
+REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>authOnlyTransaction</transactionType>
+    <amount>25.00</amount>
+    <profile>
+      <customerProfileId>1500424958</customerProfileId>
+      <paymentProfile>
+        <paymentProfileId>1500284065</paymentProfileId>
+      </paymentProfile>
+    </profile>
+    <solution>
+      <id>A1000133</id>
+    </solution>
+    <order>
+      <invoiceNumber>000000003</invoiceNumber>
+      <description></description>
+    </order>
+    <lineItems>
+      <lineItem>
+        <itemId>Subscription test</itemId>
+        <name>Subscription test</name>
+        <quantity>1.00</quantity>
+        <unitPrice>20.00</unitPrice>
+      </lineItem>
+    </lineItems>
+    <shipping>
+      <amount>5.00</amount>
+      <name></name>
+      <description></description>
+    </shipping>
+    <customer>
+      <id>1</id>
+      <email>ram10raj@gmail.com</email>
+    </customer>
+    <shipTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21  Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+    </shipTo>
+    <customerIP>115.112.148.148</customerIP>
+    <transactionSettings>
+      <setting>
+        <settingName>allowPartialAuth</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+      <setting>
+        <settingName>duplicateWindow</settingName>
+        <settingValue>15</settingValue>
+      </setting>
+      <setting>
+        <settingName>emailCustomer</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+    </transactionSettings>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>2</responseCode><authCode /><avsResultCode>Y</avsResultCode><cvvResultCode>P</cvvResultCode><cavvResultCode>2</cavvResultCode><transId>40002185713</transId><refTransID /><transHash>60685C6A1D2FC90BF9E218E5797574A5</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><errors><error><errorCode>35</errorCode><errorText>An error occurred during processing. Call Merchant Service Provider.</errorText></error></errors><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-22 11:49:48] authnetcim [115.112.148.148]: assignData()  
+[2016-08-22 11:49:48] authnetcim [115.112.148.148]: loadAndSetCard(add1ab8c062f92ee11404203b06a7778d4e0036d, true)  
+[2016-08-22 11:49:48] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-22 11:49:48] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-22 11:49:48] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-22 11:49:48] authnetcim [115.112.148.148]: authorize(Magento\Sales\Model\Order\Payment\Interceptor , 25)  
+[2016-08-22 11:49:48] authnetcim [115.112.148.148]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 11:49:48] authnetcim [115.112.148.148]: loadAndSetCard(1, false)  
+[2016-08-22 11:49:48] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-22 11:49:48] authnetcim [115.112.148.148]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 11:49:49] authnetcim [115.112.148.148]: {"response_code":1,"response_subcode":"","response_reason_code":0,"response_reason_text":"","approval_code":"X5DRJZ","auth_code":"X5DRJZ","avs_result_code":"Y","transaction_id":"40002185714","reference_transaction_id":"","invoice_number":"000000004","description":"","amount":25,"method":"CC","transaction_type":"auth_only","customer_id":"1","md5_hash":"ECC58D90E716E44928F78247C9A583F2","card_code_response_code":"P","cavv_response_code":"2","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":false}  
+[2016-08-22 11:57:33] authnetcim [115.112.148.148]: assignData()  
+[2016-08-22 11:57:33] authnetcim [115.112.148.148]: loadAndSetCard(add1ab8c062f92ee11404203b06a7778d4e0036d, true)  
+[2016-08-22 11:57:33] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-22 11:57:33] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-22 11:57:33] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-22 11:57:33] authnetcim [115.112.148.148]: authorize(Magento\Sales\Model\Order\Payment\Interceptor , 25)  
+[2016-08-22 11:57:33] authnetcim [115.112.148.148]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 11:57:33] authnetcim [115.112.148.148]: loadAndSetCard(1, false)  
+[2016-08-22 11:57:33] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-22 11:57:33] authnetcim [115.112.148.148]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 11:57:34] authnetcim [115.112.148.148]: {"response_code":1,"response_subcode":"","response_reason_code":0,"response_reason_text":"","approval_code":"IMVJZG","auth_code":"IMVJZG","avs_result_code":"Y","transaction_id":"40002186226","reference_transaction_id":"","invoice_number":"000000005","description":"","amount":25,"method":"CC","transaction_type":"auth_only","customer_id":"1","md5_hash":"B45F8C77FA7FF6A65353718688B78065","card_code_response_code":"P","cavv_response_code":"2","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":false}  
+[2016-08-22 12:04:41] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-22 12:04:41] authnetcim [115.112.148.148]: authorize(Magento\Sales\Model\Order\Payment\Interceptor , 50)  
+[2016-08-22 12:04:41] authnetcim [115.112.148.148]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 12:04:41] authnetcim [115.112.148.148]: loadAndSetCard(1, false)  
+[2016-08-22 12:04:41] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-22 12:04:41] authnetcim [115.112.148.148]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-22 12:04:42] authnetcim [115.112.148.148]: {"response_code":1,"response_subcode":"","response_reason_code":0,"response_reason_text":"","approval_code":"TJGYVQ","auth_code":"TJGYVQ","avs_result_code":"Y","transaction_id":"40002186456","reference_transaction_id":"","invoice_number":"000000006","description":"","amount":50,"method":"CC","transaction_type":"auth_only","customer_id":"1","md5_hash":"838AF574A1E5801688A65910B0643307","card_code_response_code":"P","cavv_response_code":"2","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":false}  
+[2016-08-22 13:07:26] authnetcim [52.87.73.174]: capture(Magento\Sales\Model\Order\Payment\Interceptor 1, 35)  
+[2016-08-22 13:07:26] authnetcim [52.87.73.174]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor 1)  
+[2016-08-22 13:07:26] authnetcim [52.87.73.174]: loadAndSetCard(1, false)  
+[2016-08-22 13:07:26] authnetcim [52.87.73.174]: setCard(1)  
+[2016-08-22 13:07:26] authnetcim [52.87.73.174]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor 1)  
+[2016-08-22 13:07:27] authnetcim [52.87.73.174]: {"response_code":1,"response_subcode":"","response_reason_code":0,"response_reason_text":"","approval_code":"OQJJY9","auth_code":"OQJJY9","avs_result_code":"P","transaction_id":"40002182567","reference_transaction_id":"","invoice_number":"000000001","description":"","amount":"35","method":"CC","transaction_type":"prior_auth_capture","customer_id":"1","md5_hash":"65DCC8D86D7D01D9E3463EBAEA890B36","card_code_response_code":"","cavv_response_code":"","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":false}  
+[2016-08-24 05:54:14] authnetcim [115.112.148.148]: assignData()  
+[2016-08-24 05:54:14] authnetcim [115.112.148.148]: loadAndSetCard(add1ab8c062f92ee11404203b06a7778d4e0036d, true)  
+[2016-08-24 05:54:14] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-24 05:54:14] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-24 05:54:15] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-24 05:54:15] authnetcim [115.112.148.148]: authorize(Magento\Sales\Model\Order\Payment\Interceptor , 148.24)  
+[2016-08-24 05:54:15] authnetcim [115.112.148.148]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-24 05:54:15] authnetcim [115.112.148.148]: loadAndSetCard(1, false)  
+[2016-08-24 05:54:15] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-24 05:54:15] authnetcim [115.112.148.148]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-24 05:54:16] authnetcim [115.112.148.148]: {"response_code":1,"response_subcode":"","response_reason_code":0,"response_reason_text":"","approval_code":"BC4XGF","auth_code":"BC4XGF","avs_result_code":"Y","transaction_id":"40002256532","reference_transaction_id":"","invoice_number":"000000007","description":"","amount":148.24,"method":"CC","transaction_type":"auth_only","customer_id":"1","md5_hash":"CA4A00DD4BEAFA682A8AEEF01AE2FA18","card_code_response_code":"P","cavv_response_code":"2","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":false}  
+[2016-08-24 05:55:15] authnetcim [115.112.148.148]: capture(Magento\Sales\Model\Order\Payment\Interceptor 5, 148.24)  
+[2016-08-24 05:55:15] authnetcim [115.112.148.148]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor 5)  
+[2016-08-24 05:55:15] authnetcim [115.112.148.148]: loadAndSetCard(1, false)  
+[2016-08-24 05:55:16] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-24 05:55:16] authnetcim [115.112.148.148]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor 5)  
+[2016-08-24 05:55:16] authnetcim [115.112.148.148]: {"response_code":1,"response_subcode":"","response_reason_code":0,"response_reason_text":"","approval_code":"BC4XGF","auth_code":"BC4XGF","avs_result_code":"P","transaction_id":"40002256532","reference_transaction_id":"","invoice_number":"000000007","description":"","amount":"148.24","method":"CC","transaction_type":"prior_auth_capture","customer_id":"1","md5_hash":"2C4405F7F51566B96936F24542294BC2","card_code_response_code":"","cavv_response_code":"","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":false}  
+[2016-08-24 06:28:17] authnetcim [119.226.211.80]: assignData()  
+[2016-08-24 06:28:17] authnetcim [119.226.211.80]: loadAndSetCard(add1ab8c062f92ee11404203b06a7778d4e0036d, true)  
+[2016-08-24 06:28:17] authnetcim [119.226.211.80]: setCard(1)  
+[2016-08-24 06:28:17] authnetcim [119.226.211.80]: validate(1)  
+[2016-08-24 06:32:31] authnetcim [115.112.148.148]: assignData()  
+[2016-08-24 06:32:31] authnetcim [115.112.148.148]: loadAndSetCard(add1ab8c062f92ee11404203b06a7778d4e0036d, true)  
+[2016-08-24 06:32:31] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-24 06:32:31] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-24 06:32:32] authnetcim [115.112.148.148]: validate(1)  
+[2016-08-24 06:32:32] authnetcim [115.112.148.148]: authorize(Magento\Sales\Model\Order\Payment\Interceptor , 65.69)  
+[2016-08-24 06:32:32] authnetcim [115.112.148.148]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-24 06:32:32] authnetcim [115.112.148.148]: loadAndSetCard(1, false)  
+[2016-08-24 06:32:32] authnetcim [115.112.148.148]: setCard(1)  
+[2016-08-24 06:32:32] authnetcim [115.112.148.148]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor )  
+[2016-08-24 06:32:33] authnetcim [115.112.148.148]: {"response_code":1,"response_subcode":"","response_reason_code":0,"response_reason_text":"","approval_code":"E90H46","auth_code":"E90H46","avs_result_code":"Y","transaction_id":"40002257524","reference_transaction_id":"","invoice_number":"000000008","description":"","amount":65.69,"method":"CC","transaction_type":"auth_only","customer_id":"1","md5_hash":"19CE1089950CF4A29FA92E5C21A6677D","card_code_response_code":"P","cavv_response_code":"2","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":false}  
+[2016-08-24 07:18:48] authnetcim [52.20.238.253]: capture(Magento\Sales\Model\Order\Payment\Interceptor 6, 65.69)  
+[2016-08-24 07:18:48] authnetcim [52.20.238.253]: loadOrCreateCard(Magento\Sales\Model\Order\Payment\Interceptor 6)  
+[2016-08-24 07:18:48] authnetcim [52.20.238.253]: loadAndSetCard(1, false)  
+[2016-08-24 07:18:48] authnetcim [52.20.238.253]: setCard(1)  
+[2016-08-24 07:18:48] authnetcim [52.20.238.253]: resyncStoredCard(Magento\Sales\Model\Order\Payment\Interceptor 6)  
+[2016-08-24 07:18:49] authnetcim [52.20.238.253]: {"response_code":1,"response_subcode":"","response_reason_code":0,"response_reason_text":"","approval_code":"E90H46","auth_code":"E90H46","avs_result_code":"P","transaction_id":"40002257524","reference_transaction_id":"","invoice_number":"000000008","description":"","amount":"65.69","method":"CC","transaction_type":"prior_auth_capture","customer_id":"1","md5_hash":"889796848B33ABED810DA91C79E6666E","card_code_response_code":"","cavv_response_code":"","acc_number":"XXXX1111","card_type":"Visa","split_tender_id":"","requested_amount":"","balance_on_card":"","profile_id":"1500424958","payment_id":"1500284065","is_fraud":false,"is_error":false}  

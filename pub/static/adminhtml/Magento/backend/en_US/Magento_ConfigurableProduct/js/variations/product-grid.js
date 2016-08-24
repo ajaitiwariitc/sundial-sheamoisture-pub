@@ -1,0 +1,1 @@
+/var/www/test.i3lsundial/html/vendor/magento/module-configurable-product/view/adminhtml/web/js/variations/product-grid.js

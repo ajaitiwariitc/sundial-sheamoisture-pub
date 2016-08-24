@@ -1,0 +1,1 @@
+/var/www/test.i3lsundial/html/vendor/magento/module-backend/view/adminhtml/web/js/bootstrap/editor.js

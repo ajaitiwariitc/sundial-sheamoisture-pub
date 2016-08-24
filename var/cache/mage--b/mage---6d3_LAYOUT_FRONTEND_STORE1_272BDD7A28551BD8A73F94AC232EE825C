@@ -1,0 +1,95 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1472023129;s:6:"expire";i:9999999999;s:4:"tags";s:73:"6d3_SALES_EMAIL_ORDER_INVOICE_ITEMS,6d3_LAYOUT_GENERAL_CACHE_TAG,6d3_MAGE";}
+<body>
+   <referenceBlock name="sales.email.order.invoice.renderers">
+      <block class="Magento\Sales\Block\Order\Email\Items\DefaultItems" as="default" template="email/items/invoice/default.phtml"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="sales.email.order.invoice.renderers">
+      <block class="Magento\Downloadable\Block\Sales\Order\Email\Items\Downloadable" as="downloadable" template="email/order/items/invoice/downloadable.phtml"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="sales.email.order.invoice.renderers">
+      <block class="Magento\GiftCard\Block\Sales\Order\Item\Renderer\Noquote" as="giftcard" template="Magento_Sales::email/items/invoice/default.phtml"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="sales.email.order.invoice.renderers">
+      <block class="Magento\GroupedProduct\Block\Order\Email\Items\Order\Grouped" as="grouped" template="Magento_Sales::email/items/invoice/default.phtml"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="sales.email.order.invoice.renderers">
+      <block class="Magento\Bundle\Block\Sales\Order\Items\Renderer" as="bundle" template="email/order/items/invoice/default.phtml"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="items">
+      <block class="Magento\Sales\Block\Order\Email\Items\DefaultItems" name="item_price" template="email/items/price/row.phtml"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="items">
+      <block class="Magento\Tax\Block\Item\Price\Renderer" name="item_price" template="email/items/price/row.phtml">
+         <arguments>
+            <argument name="zone" xsi:type="string">email</argument>
+         </arguments>
+      </block>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="items">
+      <block class="Magento\Weee\Block\Item\Price\Renderer" name="item_price" template="email/items/price/row.phtml">
+         <arguments>
+            <argument name="zone" xsi:type="string">email</argument>
+         </arguments>
+      </block>
+   </referenceBlock>
+</body>
+<update handle="sales_email_order_invoice_renderers"/>
+<update handle="sales_email_item_price"/>
+<body>
+   <block class="Magento\Sales\Block\Order\Email\Invoice\Items" name="items" template="email/invoice/items.phtml">
+      <block class="Magento\Framework\View\Element\RendererList" name="sales.email.order.invoice.renderers" as="renderer.list"/>
+      <block class="Magento\Sales\Block\Order\Invoice\Totals" name="invoice_totals" template="order/totals.phtml" cacheable="false">
+         <arguments>
+            <argument name="label_properties" xsi:type="string">colspan=&quot;2&quot;</argument>
+         </arguments>
+         <block class="Magento\Tax\Block\Sales\Order\Tax" name="tax" template="order/tax.phtml"/>
+      </block>
+   </block>
+   <block class="Magento\Framework\View\Element\Template" name="additional.product.info" template="Magento_Theme::template.phtml"/>
+</body>
+<body>
+   <referenceBlock name="invoice_totals">
+      <block class="Magento\CustomerBalance\Block\Sales\Order\Customerbalance" name="customerbalance" template="order/customerbalance.phtml" cacheable="false"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_totals">
+      <block class="Magento\GiftCardAccount\Block\Sales\Order\Giftcards" name="giftcards" template="order/giftcards.phtml" cacheable="false"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="additional.product.info">
+      <block class="Magento\GiftWrapping\Block\Product\Info" name="giftwrapping.product.info" template="product/info.phtml"/>
+   </referenceBlock>
+   <referenceBlock name="invoice_totals">
+      <block class="Magento\GiftWrapping\Block\Sales\Totals" name="giftwrapping" cacheable="false"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_totals">
+      <block class="Magento\Reward\Block\Sales\Order\Total" name="reward.sales.order.total"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_totals">
+      <block class="Magento\Weee\Block\Sales\Order\Totals" name="weee_inv_totals">
+         <action method="setBeforeCondition">
+            <argument name="condition" xsi:type="string">tax</argument>
+         </action>
+      </block>
+   </referenceBlock>
+</body>

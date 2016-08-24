@@ -1,0 +1,1 @@
+/var/www/test.i3lsundial/html/vendor/magento/module-catalog/view/adminhtml/web/catalog/apply-to-type-switcher.js

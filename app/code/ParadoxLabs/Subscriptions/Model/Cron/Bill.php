@@ -1,0 +1,304 @@
+<?php
+/**
+ * Paradox Labs, Inc.
+ * http://www.paradoxlabs.com
+ * 717-431-3330
+ *
+ * Need help? Open a ticket in our support system:
+ *  http://support.paradoxlabs.com
+ *
+ * @author      Ryan Hoerr <info@paradoxlabs.com>
+ * @license     http://store.paradoxlabs.com/license.html
+ */
+
+namespace ParadoxLabs\Subscriptions\Model\Cron;
+
+/**
+ * Bill Class
+ */
+class Bill
+{
+    /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    protected $scopeConfig;
+
+    /**
+     * @var \ParadoxLabs\Subscriptions\Model\ResourceModel\Subscription\CollectionFactory
+     */
+    protected $collectionFactory;
+
+    /**
+     * @var \ParadoxLabs\Subscriptions\Helper\Data
+     */
+    protected $helper;
+
+    /**
+     * @var \ParadoxLabs\Subscriptions\Model\Service\Subscription
+     */
+    protected $subscriptionService;
+
+    /**
+     * @var \Magento\Framework\Stdlib\DateTime\TimezoneInterface
+     */
+    protected $localeDate;
+
+    /**
+     * @var \Symfony\Component\Console\Output\OutputInterface
+     */
+    protected $consoleOutputStream;
+
+    /**
+     * Bill constructor.
+     *
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     * @param \ParadoxLabs\Subscriptions\Model\ResourceModel\Subscription\CollectionFactory $collectionFactory
+     * @param \ParadoxLabs\Subscriptions\Helper\Data $helper
+     * @param \ParadoxLabs\Subscriptions\Model\Service\Subscription $subscriptionService
+     * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate
+     */
+    public function __construct(
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        \ParadoxLabs\Subscriptions\Model\ResourceModel\Subscription\CollectionFactory $collectionFactory,
+        \ParadoxLabs\Subscriptions\Helper\Data $helper,
+        \ParadoxLabs\Subscriptions\Model\Service\Subscription $subscriptionService,
+        \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate
+    ) {
+        $this->collectionFactory = $collectionFactory;
+        $this->helper = $helper;
+        $this->subscriptionService = $subscriptionService;
+        $this->localeDate = $localeDate;
+        $this->scopeConfig = $scopeConfig;
+    }
+
+    /**
+     * Run subscriptions billing (entry point for cron, with active check).
+     *
+     * @return void
+     */
+    public function runSubscriptionsCron()
+    {
+        $billingActive = $this->scopeConfig->getValue(
+            'subscriptions/general/billing_active',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
+
+        if ($billingActive == 1) {
+            $this->runSubscriptions();
+        }
+    }
+
+    /**
+     * Run subscriptions billing.
+     *
+     * @return void
+     */
+    public function runSubscriptions()
+    {
+        if ($this->helper->moduleIsActive() !== true) {
+            return;
+        }
+
+        $combine = $this->scopeConfig->getValue(
+            'subscriptions/general/group_same_day',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
+
+        if ($combine == 1) {
+            $this->runCombined();
+        } else {
+            $this->runSingle();
+        }
+    }
+
+    /**
+     * Run due subscriptions (single mode)
+     *
+     * @return $this
+     */
+    protected function runSingle()
+    {
+        $now = new \DateTime('@' . time());
+
+        $subscriptions = $this->collectionFactory->create();
+        $subscriptions->addFieldToFilter(
+            'next_run',
+            [
+                'lteq' => $now->format(\Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT),
+            ]
+        );
+
+        $subscriptions->addFieldToFilter('status', \ParadoxLabs\Subscriptions\Model\Source\Status::STATUS_ACTIVE);
+
+        if (count($subscriptions) > 0) {
+            $this->log(
+                __(
+                    'CRON-single: Running %1 subscriptions.',
+                    count($subscriptions)
+                )
+            );
+
+            $billed = 0;
+            $failed = 0;
+
+            foreach ($subscriptions as $subscription) {
+                try {
+                    $success = $this->subscriptionService->generateOrder([$subscription]);
+                } catch (\Exception $e) {
+                    $success = false;
+
+                    $this->log(
+                        __(
+                            'CRON-single: Subscription %1 failed. Error: %2',
+                            $subscription->getId(),
+                            $e->getMessage()
+                        )
+                    );
+                }
+
+                if ($success === true) {
+                    $billed++;
+                } else {
+                    $failed++;
+                }
+            }
+
+            $this->log(
+                __(
+                    'CRON-single: Ran subscriptions; %1 billed, %2 failed.',
+                    $billed,
+                    $failed
+                )
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Run due subscriptions (combined mode -- group multiple from same day)
+     *
+     * @return $this
+     */
+    protected function runCombined()
+    {
+        $tomorrow = new \DateTime('tomorrow', new \DateTimeZone($this->localeDate->getConfigTimezone()));
+
+        $subscriptions = $this->collectionFactory->create();
+        $subscriptions->addFieldToFilter(
+            'next_run',
+            [
+                'lt' => $tomorrow->format(\Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT),
+            ]
+        );
+
+        $subscriptions->addFieldToFilter('status', \ParadoxLabs\Subscriptions\Model\Source\Status::STATUS_ACTIVE);
+
+        if (count($subscriptions) > 0) {
+            $this->log(
+                __(
+                    'CRON-multi: Checking %1 subscriptions.',
+                    count($subscriptions)
+                )
+            );
+
+            $groups = [];
+
+            $billed = 0;
+            $failed = 0;
+
+            /**
+             * Form all pending subscriptions for the day into groups.
+             */
+            foreach ($subscriptions as $subscription) {
+                $key = $this->subscriptionService->hashFulfillmentInfo($subscription);
+
+                if (!isset($groups[$key])) {
+                    $groups[$key] = [];
+                }
+
+                $groups[$key][] = $subscription;
+            }
+
+            /**
+             * Bill each group iff at least one is due.
+             */
+            foreach ($groups as $key => $group) {
+                $due = false;
+
+                /** @var \ParadoxLabs\Subscriptions\Api\Data\SubscriptionInterface $subscription */
+                foreach ($group as $subscription) {
+                    if (strtotime($subscription->getNextRun()) <= time()) {
+                        $due = true;
+                        break;
+                    }
+                }
+
+                if ($due === true) {
+                    try {
+                        $success = $this->subscriptionService->generateOrder($group);
+                    } catch (\Exception $e) {
+                        $success = false;
+
+                        $ids = [];
+                        foreach ($group as $subscription) {
+                            $ids[] = $subscription->getId();
+                        }
+
+                        $this->log(
+                            __(
+                                'CRON-multi: Group [%1] failed. Error: %2',
+                                implode(',', $ids),
+                                $e->getMessage()
+                            )
+                        );
+                    }
+
+                    if ($success === true) {
+                        $billed += count($group);
+                    } else {
+                        $failed += count($group);
+                    }
+                }
+            }
+
+            $this->log(
+                __(
+                    'CRON-multi: Ran subscriptions; %1 billed, %2 failed.',
+                    $billed,
+                    $failed
+                )
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set console output stream. Used when run from command line.
+     *
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @return $this
+     */
+    public function setConsoleOutput(\Symfony\Component\Console\Output\OutputInterface $output)
+    {
+        $this->consoleOutputStream = $output;
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $message
+     * @return $this
+     */
+    protected function log($message)
+    {
+        $this->helper->log('subscriptions', $message);
+
+        if ($this->consoleOutputStream !== null) {
+            $this->consoleOutputStream->writeln((string)$message);
+        }
+
+        return $this;
+    }
+}

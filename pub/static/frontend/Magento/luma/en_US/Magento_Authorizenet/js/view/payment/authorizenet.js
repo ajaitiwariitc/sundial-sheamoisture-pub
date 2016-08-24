@@ -1,0 +1,1 @@
+/var/www/test.i3lsundial/html/vendor/magento/module-authorizenet/view/frontend/web/js/view/payment/authorizenet.js

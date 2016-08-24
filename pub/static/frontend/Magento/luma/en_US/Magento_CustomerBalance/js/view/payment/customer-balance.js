@@ -1,0 +1,1 @@
+/var/www/test.i3lsundial/html/vendor/magento/module-customer-balance/view/frontend/web/js/view/payment/customer-balance.js

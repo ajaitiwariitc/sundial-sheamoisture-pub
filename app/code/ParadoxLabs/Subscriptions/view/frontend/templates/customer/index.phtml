@@ -1,0 +1,61 @@
+<?php /** @var \ParadoxLabs\Subscriptions\Block\Customer\Index $block */ ?>
+<?php // @codingStandardsIgnoreFile ?>
+<?php $subscriptions = $block->getCollection(); ?>
+
+<?php echo $block->getChildHtml('info');?>
+
+<?php if ($subscriptions && count($subscriptions)): ?>
+    <?php echo $block->getToolbarHtml() ?>
+
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-subscriptions-table">
+            <caption class="table-caption"><?php echo __('My Subscriptions') ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?php echo __('Ref #') ?></th>
+                <th scope="col" class="col description"><?php echo __('Description') ?></th>
+                <th scope="col" class="col status"><?php echo __('Status') ?></th>
+                <th scope="col" class="col frequency"><?php echo __('Frequency') ?></th>
+                <th scope="col" class="col total"><?php echo __('Subtotal') ?></th>
+                <th scope="col" class="col date"><?php echo __('Last Run') ?></th>
+                <th scope="col" class="col date"><?php echo __('Next Run') ?></th>
+                <th scope="col" class="col actions">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php /** @var \ParadoxLabs\Subscriptions\Model\Subscription $subscription */ ?>
+            <?php foreach ($subscriptions as $subscription): ?>
+                <tr>
+                    <td data-th="<?php echo $block->escapeHtml(__('Ref #')) ?>" class="col id"><?php echo $subscription->getId() ?></td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Description')) ?>" class="col description"><?php echo $subscription->getDescription() ?></td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Status')) ?>" class="col status"><?php echo $block->getStatus($subscription) ?></td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Frequency')) ?>" class="col frequency"><?php echo $block->getFrequencyLabel($subscription) ?></td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Subtotal')) ?>" class="col total"><?php echo $block->getSubtotal($subscription) ?></td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Last Run')) ?>" class="col date"><?php echo $block->formatDate($subscription->getLastRun()) ?></td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Next Run')) ?>" class="col date">
+                        <?php if ($subscription->getStatus() == \ParadoxLabs\Subscriptions\Model\Source\Status::STATUS_ACTIVE): ?>
+                            <?php echo $block->formatDate($subscription->getNextRun()); ?>
+                        <?php else: ?>
+                            <?php echo __('-'); ?>
+                        <?php endif; ?>
+                    </td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Actions')) ?>" class="col actions">
+                        <a href="<?php echo $block->getViewUrl($subscription) ?>" class="action view">
+                            <span><?php echo __('View') ?></span>
+                        </a>
+                        <?php if ($block->getStatusSource()->canSetStatus($subscription, \ParadoxLabs\Subscriptions\Model\Source\Status::STATUS_CANCELED)): ?>
+                            <a href="<?php echo $block->getEditUrl($subscription) ?>" class="action edit">
+                                <span><?php echo __('Edit') ?></span>
+                            </a>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="subtotal-notice message warning"><?php echo __('Note: Subtotals do not include shipping, tax, or other possible surcharges. Actual order totals may vary over time.'); ?></p>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have not purchased any subscriptions.'); ?></span></div>
+<?php endif ?>

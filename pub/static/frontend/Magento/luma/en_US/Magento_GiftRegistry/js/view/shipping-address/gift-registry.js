@@ -1,0 +1,1 @@
+/var/www/test.i3lsundial/html/vendor/magento/module-gift-registry/view/frontend/web/js/view/shipping-address/gift-registry.js

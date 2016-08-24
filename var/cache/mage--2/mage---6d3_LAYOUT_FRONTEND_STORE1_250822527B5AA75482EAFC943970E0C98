@@ -1,0 +1,28 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1472023130;s:6:"expire";i:9999999999;s:4:"tags";s:74:"6d3_SALES_EMAIL_ORDER_SHIPMENT_ITEMS,6d3_LAYOUT_GENERAL_CACHE_TAG,6d3_MAGE";}
+<body>
+   <referenceBlock name="sales.email.order.shipment.renderers">
+      <block class="Magento\Sales\Block\Order\Email\Items\DefaultItems" as="default" template="email/items/shipment/default.phtml"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="sales.email.order.shipment.renderers">
+      <block class="Magento\GiftCard\Block\Sales\Order\Item\Renderer\Noquote" as="giftcard" template="Magento_Sales::email/items/shipment/default.phtml"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="sales.email.order.shipment.renderers">
+      <block class="Magento\Bundle\Block\Sales\Order\Items\Renderer" as="bundle" template="email/order/items/shipment/default.phtml"/>
+   </referenceBlock>
+</body>
+<update handle="sales_email_order_shipment_renderers"/>
+<body>
+   <block class="Magento\Sales\Block\Order\Email\Shipment\Items" name="items" template="email/shipment/items.phtml">
+      <block class="Magento\Framework\View\Element\RendererList" name="sales.email.order.shipment.renderers" as="renderer.list"/>
+   </block>
+   <block class="Magento\Framework\View\Element\Template" name="additional.product.info" template="Magento_Theme::template.phtml"/>
+</body>
+<body>
+   <referenceBlock name="additional.product.info">
+      <block class="Magento\GiftWrapping\Block\Product\Info" name="giftwrapping.product.info" template="product/info.phtml"/>
+   </referenceBlock>
+</body>

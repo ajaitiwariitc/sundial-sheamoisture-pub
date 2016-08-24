@@ -1,0 +1,725 @@
+[2016-08-22 10:03:57] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<getCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <customerProfileId>1</customerProfileId>
+</getCustomerProfileRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><getCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Error</resultCode><message><code>E00040</code><text>The record cannot be found.</text></message></messages></getCustomerProfileResponse>
+  
+[2016-08-22 10:05:25] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<getCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <customerProfileId>1</customerProfileId>
+</getCustomerProfileRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><getCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Error</resultCode><message><code>E00040</code><text>The record cannot be found.</text></message></messages></getCustomerProfileResponse>
+  
+[2016-08-22 10:10:05] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <profile>
+    <merchantCustomerId>1</merchantCustomerId>
+    <description></description>
+    <email>ram10raj@gmail.com</email>
+  </profile>
+</createCustomerProfileRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>1500424958</customerProfileId><customerPaymentProfileIdList /><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+  
+[2016-08-22 10:10:07] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <profile>
+    <merchantCustomerId>1</merchantCustomerId>
+    <description></description>
+    <email>ram10raj@gmail.com</email>
+  </profile>
+</createCustomerProfileRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>1500424958</customerProfileId><customerPaymentProfileIdList /><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createCustomerPaymentProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <customerProfileId>1500424958</customerProfileId>
+  <paymentProfile>
+    <billTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21   Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+      <phoneNumber>8220271604</phoneNumber>
+      <faxNumber></faxNumber>
+    </billTo>
+    <payment>
+      <creditCard>
+        <cardNumber>XXXX1111</cardNumber>
+        <expirationDate>2017-05</expirationDate>
+      </creditCard>
+    </payment>
+  </paymentProfile>
+  <validationMode>liveMode</validationMode>
+</createCustomerPaymentProfileRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createCustomerPaymentProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>1500424958</customerProfileId><customerPaymentProfileId>1500284065</customerPaymentProfileId><validationDirectResponse>1,1,1,This transaction has been approved.,L3X3JN,Y,40002182566,none,Test transaction for ValidateCustomerPaymentProfile.,0.00,CC,auth_only,none,Ramki,ram,ITC,No 21 &amp;nbsp;&amp;nbsp;Vadavalli,Coimbatore,Tamilnadu,635305,IN,8220271604,,email@example.com,,,,,,,,,0.00,0.00,0.00,FALSE,none,73CC2A3BE2156C20C72C086A7A30A5BA,P,2,,,,,,,,,,,XXXX1111,Visa,,,,,,,,,,,,,,,,,</validationDirectResponse></createCustomerPaymentProfileResponse>
+  
+[2016-08-22 10:10:08] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createCustomerProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <profile>
+    <merchantCustomerId>1</merchantCustomerId>
+    <description></description>
+    <email>ram10raj@gmail.com</email>
+  </profile>
+</createCustomerProfileRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createCustomerProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>1500424958</customerProfileId><customerPaymentProfileIdList /><customerShippingAddressIdList /><validationDirectResponseList /></createCustomerProfileResponse>
+REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createCustomerPaymentProfileRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <customerProfileId>1500424958</customerProfileId>
+  <paymentProfile>
+    <billTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21   Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+      <phoneNumber>8220271604</phoneNumber>
+      <faxNumber></faxNumber>
+    </billTo>
+    <payment>
+      <creditCard>
+        <cardNumber>XXXX1111</cardNumber>
+        <expirationDate>2017-05</expirationDate>
+      </creditCard>
+    </payment>
+  </paymentProfile>
+  <validationMode>liveMode</validationMode>
+</createCustomerPaymentProfileRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createCustomerPaymentProfileResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><customerProfileId>1500424958</customerProfileId><customerPaymentProfileId>1500284065</customerPaymentProfileId><validationDirectResponse>1,1,1,This transaction has been approved.,L3X3JN,Y,40002182566,none,Test transaction for ValidateCustomerPaymentProfile.,0.00,CC,auth_only,none,Ramki,ram,ITC,No 21 &amp;nbsp;&amp;nbsp;Vadavalli,Coimbatore,Tamilnadu,635305,IN,8220271604,,email@example.com,,,,,,,,,0.00,0.00,0.00,FALSE,none,73CC2A3BE2156C20C72C086A7A30A5BA,P,2,,,,,,,,,,,XXXX1111,Visa,,,,,,,,,,,,,,,,,</validationDirectResponse></createCustomerPaymentProfileResponse>
+REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>authOnlyTransaction</transactionType>
+    <amount>35.00</amount>
+    <profile>
+      <customerProfileId>1500424958</customerProfileId>
+      <paymentProfile>
+        <paymentProfileId>1500284065</paymentProfileId>
+      </paymentProfile>
+    </profile>
+    <solution>
+      <id>A1000133</id>
+    </solution>
+    <order>
+      <invoiceNumber>000000001</invoiceNumber>
+      <description></description>
+    </order>
+    <lineItems>
+      <lineItem>
+        <itemId>Test</itemId>
+        <name>Test</name>
+        <quantity>1.00</quantity>
+        <unitPrice>30.00</unitPrice>
+      </lineItem>
+    </lineItems>
+    <shipping>
+      <amount>5.00</amount>
+      <name></name>
+      <description></description>
+    </shipping>
+    <customer>
+      <id>1</id>
+      <email>ram10raj@gmail.com</email>
+    </customer>
+    <shipTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21  Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+    </shipTo>
+    <customerIP>115.112.148.148</customerIP>
+    <transactionSettings>
+      <setting>
+        <settingName>allowPartialAuth</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+      <setting>
+        <settingName>duplicateWindow</settingName>
+        <settingValue>15</settingValue>
+      </setting>
+      <setting>
+        <settingName>emailCustomer</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+    </transactionSettings>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>1</responseCode><authCode>OQJJY9</authCode><avsResultCode>Y</avsResultCode><cvvResultCode>P</cvvResultCode><cavvResultCode>2</cavvResultCode><transId>40002182567</transId><refTransID /><transHash>68D9C62D888C43E36F8FBCBAEC187EBF</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><messages><message><code>1</code><description>This transaction has been approved.</description></message></messages><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-22 11:49:18] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>authOnlyTransaction</transactionType>
+    <amount>25.00</amount>
+    <profile>
+      <customerProfileId>1500424958</customerProfileId>
+      <paymentProfile>
+        <paymentProfileId>1500284065</paymentProfileId>
+      </paymentProfile>
+    </profile>
+    <solution>
+      <id>A1000133</id>
+    </solution>
+    <order>
+      <invoiceNumber>000000002</invoiceNumber>
+      <description></description>
+    </order>
+    <lineItems>
+      <lineItem>
+        <itemId>Subscription test</itemId>
+        <name>Subscription test</name>
+        <quantity>1.00</quantity>
+        <unitPrice>20.00</unitPrice>
+      </lineItem>
+    </lineItems>
+    <shipping>
+      <amount>5.00</amount>
+      <name></name>
+      <description></description>
+    </shipping>
+    <customer>
+      <id>1</id>
+      <email>ram10raj@gmail.com</email>
+    </customer>
+    <shipTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21  Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+    </shipTo>
+    <customerIP>115.112.148.148</customerIP>
+    <transactionSettings>
+      <setting>
+        <settingName>allowPartialAuth</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+      <setting>
+        <settingName>duplicateWindow</settingName>
+        <settingValue>15</settingValue>
+      </setting>
+      <setting>
+        <settingName>emailCustomer</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+    </transactionSettings>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>2</responseCode><authCode /><avsResultCode>Y</avsResultCode><cvvResultCode>P</cvvResultCode><cavvResultCode>2</cavvResultCode><transId>40002185712</transId><refTransID /><transHash>A2CED04AD469357AB36764072568CF1D</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><errors><error><errorCode>2</errorCode><errorText>This transaction has been declined.</errorText></error></errors><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-22 11:49:29] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>authOnlyTransaction</transactionType>
+    <amount>25.00</amount>
+    <profile>
+      <customerProfileId>1500424958</customerProfileId>
+      <paymentProfile>
+        <paymentProfileId>1500284065</paymentProfileId>
+      </paymentProfile>
+    </profile>
+    <solution>
+      <id>A1000133</id>
+    </solution>
+    <order>
+      <invoiceNumber>000000003</invoiceNumber>
+      <description></description>
+    </order>
+    <lineItems>
+      <lineItem>
+        <itemId>Subscription test</itemId>
+        <name>Subscription test</name>
+        <quantity>1.00</quantity>
+        <unitPrice>20.00</unitPrice>
+      </lineItem>
+    </lineItems>
+    <shipping>
+      <amount>5.00</amount>
+      <name></name>
+      <description></description>
+    </shipping>
+    <customer>
+      <id>1</id>
+      <email>ram10raj@gmail.com</email>
+    </customer>
+    <shipTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21  Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+    </shipTo>
+    <customerIP>115.112.148.148</customerIP>
+    <transactionSettings>
+      <setting>
+        <settingName>allowPartialAuth</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+      <setting>
+        <settingName>duplicateWindow</settingName>
+        <settingValue>15</settingValue>
+      </setting>
+      <setting>
+        <settingName>emailCustomer</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+    </transactionSettings>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>2</responseCode><authCode /><avsResultCode>Y</avsResultCode><cvvResultCode>P</cvvResultCode><cavvResultCode>2</cavvResultCode><transId>40002185713</transId><refTransID /><transHash>60685C6A1D2FC90BF9E218E5797574A5</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><errors><error><errorCode>35</errorCode><errorText>An error occurred during processing. Call Merchant Service Provider.</errorText></error></errors><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-22 11:49:49] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>authOnlyTransaction</transactionType>
+    <amount>25.00</amount>
+    <profile>
+      <customerProfileId>1500424958</customerProfileId>
+      <paymentProfile>
+        <paymentProfileId>1500284065</paymentProfileId>
+      </paymentProfile>
+    </profile>
+    <solution>
+      <id>A1000133</id>
+    </solution>
+    <order>
+      <invoiceNumber>000000004</invoiceNumber>
+      <description></description>
+    </order>
+    <lineItems>
+      <lineItem>
+        <itemId>Subscription test</itemId>
+        <name>Subscription test</name>
+        <quantity>1.00</quantity>
+        <unitPrice>20.00</unitPrice>
+      </lineItem>
+    </lineItems>
+    <shipping>
+      <amount>5.00</amount>
+      <name></name>
+      <description></description>
+    </shipping>
+    <customer>
+      <id>1</id>
+      <email>ram10raj@gmail.com</email>
+    </customer>
+    <shipTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21  Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+    </shipTo>
+    <customerIP>115.112.148.148</customerIP>
+    <transactionSettings>
+      <setting>
+        <settingName>allowPartialAuth</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+      <setting>
+        <settingName>duplicateWindow</settingName>
+        <settingValue>15</settingValue>
+      </setting>
+      <setting>
+        <settingName>emailCustomer</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+    </transactionSettings>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>1</responseCode><authCode>X5DRJZ</authCode><avsResultCode>Y</avsResultCode><cvvResultCode>P</cvvResultCode><cavvResultCode>2</cavvResultCode><transId>40002185714</transId><refTransID /><transHash>ECC58D90E716E44928F78247C9A583F2</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><messages><message><code>1</code><description>This transaction has been approved.</description></message></messages><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-22 11:57:34] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>authOnlyTransaction</transactionType>
+    <amount>25.00</amount>
+    <profile>
+      <customerProfileId>1500424958</customerProfileId>
+      <paymentProfile>
+        <paymentProfileId>1500284065</paymentProfileId>
+      </paymentProfile>
+    </profile>
+    <solution>
+      <id>A1000133</id>
+    </solution>
+    <order>
+      <invoiceNumber>000000005</invoiceNumber>
+      <description></description>
+    </order>
+    <lineItems>
+      <lineItem>
+        <itemId>Subscription test</itemId>
+        <name>Subscription test</name>
+        <quantity>1.00</quantity>
+        <unitPrice>20.00</unitPrice>
+      </lineItem>
+    </lineItems>
+    <shipping>
+      <amount>5.00</amount>
+      <name></name>
+      <description></description>
+    </shipping>
+    <customer>
+      <id>1</id>
+      <email>ram10raj@gmail.com</email>
+    </customer>
+    <shipTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21  Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+    </shipTo>
+    <customerIP>115.112.148.148</customerIP>
+    <transactionSettings>
+      <setting>
+        <settingName>allowPartialAuth</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+      <setting>
+        <settingName>duplicateWindow</settingName>
+        <settingValue>15</settingValue>
+      </setting>
+      <setting>
+        <settingName>emailCustomer</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+    </transactionSettings>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>1</responseCode><authCode>IMVJZG</authCode><avsResultCode>Y</avsResultCode><cvvResultCode>P</cvvResultCode><cavvResultCode>2</cavvResultCode><transId>40002186226</transId><refTransID /><transHash>B45F8C77FA7FF6A65353718688B78065</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><messages><message><code>1</code><description>This transaction has been approved.</description></message></messages><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-22 12:04:42] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>authOnlyTransaction</transactionType>
+    <amount>50.00</amount>
+    <profile>
+      <customerProfileId>1500424958</customerProfileId>
+      <paymentProfile>
+        <paymentProfileId>1500284065</paymentProfileId>
+      </paymentProfile>
+    </profile>
+    <solution>
+      <id>A1000133</id>
+    </solution>
+    <order>
+      <invoiceNumber>000000006</invoiceNumber>
+      <description></description>
+    </order>
+    <lineItems>
+      <lineItem>
+        <itemId>Subscription test</itemId>
+        <name>Subscription test</name>
+        <quantity>2.00</quantity>
+        <unitPrice>20.00</unitPrice>
+      </lineItem>
+    </lineItems>
+    <shipping>
+      <amount>10.00</amount>
+      <name></name>
+      <description></description>
+    </shipping>
+    <customer>
+      <id>1</id>
+      <email>ram10raj@gmail.com</email>
+    </customer>
+    <shipTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21  Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+    </shipTo>
+    <customerIP>115.112.148.148</customerIP>
+    <transactionSettings>
+      <setting>
+        <settingName>allowPartialAuth</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+      <setting>
+        <settingName>duplicateWindow</settingName>
+        <settingValue>15</settingValue>
+      </setting>
+      <setting>
+        <settingName>emailCustomer</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+    </transactionSettings>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>1</responseCode><authCode>TJGYVQ</authCode><avsResultCode>Y</avsResultCode><cvvResultCode>P</cvvResultCode><cavvResultCode>2</cavvResultCode><transId>40002186456</transId><refTransID /><transHash>838AF574A1E5801688A65910B0643307</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><messages><message><code>1</code><description>This transaction has been approved.</description></message></messages><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-22 13:07:27] authnetcim [52.87.73.174]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>priorAuthCaptureTransaction</transactionType>
+    <amount>35.00</amount>
+    <refTransId>40002182567</refTransId>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>1</responseCode><authCode>OQJJY9</authCode><avsResultCode>P</avsResultCode><cvvResultCode /><cavvResultCode /><transId>40002182567</transId><refTransID>40002182567</refTransID><transHash>65DCC8D86D7D01D9E3463EBAEA890B36</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><messages><message><code>1</code><description>This transaction has been approved.</description></message></messages><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-24 05:54:16] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>authOnlyTransaction</transactionType>
+    <amount>148.24</amount>
+    <profile>
+      <customerProfileId>1500424958</customerProfileId>
+      <paymentProfile>
+        <paymentProfileId>1500284065</paymentProfileId>
+      </paymentProfile>
+    </profile>
+    <solution>
+      <id>A1000133</id>
+    </solution>
+    <order>
+      <invoiceNumber>000000007</invoiceNumber>
+      <description></description>
+    </order>
+    <lineItems>
+      <lineItem>
+        <itemId>Subscription test</itemId>
+        <name>Subscription test</name>
+        <quantity>2.00</quantity>
+        <unitPrice>20.00</unitPrice>
+      </lineItem>
+    </lineItems>
+    <shipping>
+      <amount>108.24</amount>
+      <name></name>
+      <description></description>
+    </shipping>
+    <customer>
+      <id>1</id>
+      <email>ram10raj@gmail.com</email>
+    </customer>
+    <shipTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>ITC</company>
+      <address>No 21  Vadavalli</address>
+      <city>Coimbatore</city>
+      <state>Tamilnadu</state>
+      <zip>635305</zip>
+      <country>IN</country>
+    </shipTo>
+    <customerIP>52.87.73.174</customerIP>
+    <transactionSettings>
+      <setting>
+        <settingName>allowPartialAuth</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+      <setting>
+        <settingName>duplicateWindow</settingName>
+        <settingValue>15</settingValue>
+      </setting>
+      <setting>
+        <settingName>emailCustomer</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+    </transactionSettings>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>1</responseCode><authCode>BC4XGF</authCode><avsResultCode>Y</avsResultCode><cvvResultCode>P</cvvResultCode><cavvResultCode>2</cavvResultCode><transId>40002256532</transId><refTransID /><transHash>CA4A00DD4BEAFA682A8AEEF01AE2FA18</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><messages><message><code>1</code><description>This transaction has been approved.</description></message></messages><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-24 05:55:16] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>priorAuthCaptureTransaction</transactionType>
+    <amount>148.24</amount>
+    <refTransId>40002256532</refTransId>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>1</responseCode><authCode>BC4XGF</authCode><avsResultCode>P</avsResultCode><cvvResultCode /><cavvResultCode /><transId>40002256532</transId><refTransID>40002256532</refTransID><transHash>2C4405F7F51566B96936F24542294BC2</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><messages><message><code>1</code><description>This transaction has been approved.</description></message></messages><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-24 06:32:33] authnetcim [115.112.148.148]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>authOnlyTransaction</transactionType>
+    <amount>65.69</amount>
+    <profile>
+      <customerProfileId>1500424958</customerProfileId>
+      <paymentProfile>
+        <paymentProfileId>1500284065</paymentProfileId>
+      </paymentProfile>
+    </profile>
+    <solution>
+      <id>A1000133</id>
+    </solution>
+    <order>
+      <invoiceNumber>000000008</invoiceNumber>
+      <description></description>
+    </order>
+    <lineItems>
+      <lineItem>
+        <itemId>Subscription test</itemId>
+        <name>Subscription test</name>
+        <quantity>2.00</quantity>
+        <unitPrice>20.00</unitPrice>
+      </lineItem>
+    </lineItems>
+    <shipping>
+      <amount>25.69</amount>
+      <name></name>
+      <description></description>
+    </shipping>
+    <customer>
+      <id>1</id>
+      <email>ram10raj@gmail.com</email>
+    </customer>
+    <shipTo>
+      <firstName>Ramki</firstName>
+      <lastName>ram</lastName>
+      <company>SheaMoisture</company>
+      <address>11 Ranick Dr South</address>
+      <city>Amityville</city>
+      <state>New York</state>
+      <zip>11701</zip>
+      <country>US</country>
+    </shipTo>
+    <customerIP>115.112.148.148</customerIP>
+    <transactionSettings>
+      <setting>
+        <settingName>allowPartialAuth</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+      <setting>
+        <settingName>duplicateWindow</settingName>
+        <settingValue>15</settingValue>
+      </setting>
+      <setting>
+        <settingName>emailCustomer</settingName>
+        <settingValue>false</settingValue>
+      </setting>
+    </transactionSettings>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>1</responseCode><authCode>E90H46</authCode><avsResultCode>Y</avsResultCode><cvvResultCode>P</cvvResultCode><cavvResultCode>2</cavvResultCode><transId>40002257524</transId><refTransID /><transHash>19CE1089950CF4A29FA92E5C21A6677D</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><messages><message><code>1</code><description>This transaction has been approved.</description></message></messages><transHashSha2 /></transactionResponse></createTransactionResponse>
+  
+[2016-08-24 07:18:49] authnetcim [52.20.238.253]: REQUEST: <?xml version="1.0" encoding="UTF-8"?>
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+  <merchantAuthentication>
+    <name>XXXXgk7H</name>
+    <transactionKey>XXXX95Bf</transactionKey>
+  </merchantAuthentication>
+  <transactionRequest>
+    <transactionType>priorAuthCaptureTransaction</transactionType>
+    <amount>65.69</amount>
+    <refTransId>40002257524</refTransId>
+  </transactionRequest>
+</createTransactionRequest>
+
+RESPONSE: ﻿<?xml version="1.0" encoding="utf-8"?><createTransactionResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"><messages><resultCode>Ok</resultCode><message><code>I00001</code><text>Successful.</text></message></messages><transactionResponse><responseCode>1</responseCode><authCode>E90H46</authCode><avsResultCode>P</avsResultCode><cvvResultCode /><cavvResultCode /><transId>40002257524</transId><refTransID>40002257524</refTransID><transHash>889796848B33ABED810DA91C79E6666E</transHash><testRequest>0</testRequest><accountNumber>XXXX1111</accountNumber><accountType>Visa</accountType><messages><message><code>1</code><description>This transaction has been approved.</description></message></messages><transHashSha2 /></transactionResponse></createTransactionResponse>
+  

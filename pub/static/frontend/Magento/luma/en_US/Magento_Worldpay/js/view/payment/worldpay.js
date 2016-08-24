@@ -1,0 +1,1 @@
+/var/www/test.i3lsundial/html/vendor/magento/module-worldpay/view/frontend/web/js/view/payment/worldpay.js

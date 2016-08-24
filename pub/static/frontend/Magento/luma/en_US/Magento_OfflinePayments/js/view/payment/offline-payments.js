@@ -1,0 +1,1 @@
+/var/www/test.i3lsundial/html/vendor/magento/module-offline-payments/view/frontend/web/js/view/payment/offline-payments.js

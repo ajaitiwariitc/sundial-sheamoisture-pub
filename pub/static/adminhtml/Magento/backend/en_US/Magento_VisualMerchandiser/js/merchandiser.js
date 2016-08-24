@@ -1,0 +1,1 @@
+/var/www/test.i3lsundial/html/vendor/magento/module-visual-merchandiser/view/adminhtml/web/js/merchandiser.js

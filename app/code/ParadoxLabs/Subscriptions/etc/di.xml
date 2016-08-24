@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Adding subscription repository -->
+    <preference for="ParadoxLabs\Subscriptions\Api\Data\SubscriptionSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="ParadoxLabs\Subscriptions\Api\Data\SubscriptionInterface" type="ParadoxLabs\Subscriptions\Model\Subscription" />
+    <preference for="ParadoxLabs\Subscriptions\Api\SubscriptionRepositoryInterface" type="ParadoxLabs\Subscriptions\Model\SubscriptionRepository" />
+
+    <!-- Adding log repository -->
+    <preference for="ParadoxLabs\Subscriptions\Api\Data\LogSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="ParadoxLabs\Subscriptions\Api\Data\LogInterface" type="ParadoxLabs\Subscriptions\Model\Log" />
+    <preference for="ParadoxLabs\Subscriptions\Api\LogRepositoryInterface" type="ParadoxLabs\Subscriptions\Model\LogRepository" />
+
+    <!-- Subscription grid -->
+    <type name="ParadoxLabs\Subscriptions\Model\ResourceModel\Subscription\UiCollection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">paradoxlabs_subscription</argument>
+            <argument name="resourceModel" xsi:type="string">ParadoxLabs\Subscriptions\Model\ResourceModel\Subscription</argument>
+        </arguments>
+    </type>
+    <type name="ParadoxLabs\Subscriptions\Model\ResourceModel\Log\UiCollection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">paradoxlabs_subscription_log</argument>
+            <argument name="resourceModel" xsi:type="string">ParadoxLabs\Subscriptions\Model\ResourceModel\Log</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="subscriptions_listing_data_source" xsi:type="string">ParadoxLabs\Subscriptions\Model\ResourceModel\Subscription\UiCollection</item>
+                <item name="subscriptions_log_data_source" xsi:type="string">ParadoxLabs\Subscriptions\Model\ResourceModel\Log\UiCollection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Custom options hook -->
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="subscriptions_generate_custom_options" type="ParadoxLabs\Subscriptions\Plugin\Catalog\Model\Product\Plugin" />
+    </type>
+
+    <!-- Quote delete prevention hook -->
+    <type name="Magento\Quote\Model\Quote">
+        <plugin name="subscriptions_prevent_quote_delete" type="ParadoxLabs\Subscriptions\Plugin\Quote\Model\Quote\Plugin" />
+    </type>
+
+    <!-- Custom commands -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="subscriptions_bill" xsi:type="object">ParadoxLabs\Subscriptions\Console\Command\BillCommand</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

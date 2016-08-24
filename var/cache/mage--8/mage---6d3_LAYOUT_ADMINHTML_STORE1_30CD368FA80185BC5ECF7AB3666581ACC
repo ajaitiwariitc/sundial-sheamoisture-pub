@@ -1,0 +1,244 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1472023274;s:6:"expire";i:9999999999;s:4:"tags";s:78:"6d3_DEFAULT,6d3_SALES_ORDER_INVOICE_VIEW,6d3_LAYOUT_GENERAL_CACHE_TAG,6d3_MAGE";}
+<head>
+   <title>Magento Admin</title>
+   <meta name="viewport" content="width=1024, initial-scale=1"/>
+   <link src="requirejs/require.js"/>
+   <css src="extjs/resources/css/ext-all.css"/>
+   <css src="extjs/resources/css/ytheme-magento.css"/>
+</head>
+<body>
+   <attribute name="id" value="html-body"/>
+   <block name="require.js" class="Magento\Backend\Block\Page\RequireJs" template="Magento_Backend::page/js/require_js.phtml"/>
+   <referenceContainer name="global.notices">
+      <block class="Magento\Backend\Block\Page\Notices" name="global_notices" as="global_notices" template="page/notices.phtml"/>
+   </referenceContainer>
+   <referenceContainer name="header">
+      <block class="Magento\Backend\Block\Page\Header" name="logo" before="-">
+         <arguments>
+            <argument name="show_part" xsi:type="string">logo</argument>
+            <argument name="edition" translate="true" xsi:type="string">Community Edition</argument>
+            <argument name="logo_image_src" xsi:type="string">images/magento-icon.svg</argument>
+         </arguments>
+      </block>
+      <block class="Magento\Backend\Block\GlobalSearch" name="global.search" as="search" after="logo" acl="Magento_Backend::global_search"/>
+      <block class="Magento\Backend\Block\Page\Header" name="user" after="-">
+         <arguments>
+            <argument name="show_part" xsi:type="string">user</argument>
+         </arguments>
+      </block>
+   </referenceContainer>
+   <referenceContainer name="page.menu">
+      <block class="Magento\Backend\Block\Menu" name="menu" as="menu" template="Magento_Backend::menu.phtml"/>
+   </referenceContainer>
+   <referenceContainer name="page.breadcrumbs">
+      <block class="Magento\Backend\Block\Widget\Breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+   </referenceContainer>
+   <referenceContainer name="page.formkey">
+      <block class="Magento\Backend\Block\Admin\Formkey" name="formkey" as="formkey" template="Magento_Backend::admin/formkey.phtml"/>
+   </referenceContainer>
+   <referenceContainer name="main.top">
+      <block class="Magento\Theme\Block\Html\Title" name="page.title" template="title.phtml"/>
+   </referenceContainer>
+   <referenceContainer name="page.messages">
+      <block class="Magento\Framework\View\Element\Messages" name="messages" as="messages"/>
+   </referenceContainer>
+   <referenceContainer name="page.main.actions">
+      <block class="Magento\Framework\View\Element\Template" name="page.actions.toolbar" template="Magento_Backend::pageactions.phtml" after="-"/>
+   </referenceContainer>
+   <referenceContainer name="footer">
+      <container name="legal" htmlTag="div" htmlClass="footer-legal">
+         <container name="legal.copyright" htmlTag="p" htmlClass="copyright col-m-6">
+            <block class="Magento\Backend\Block\Page\Copyright" name="copyright" as="copyright"/>
+         </container>
+         <container name="legal.system" htmlTag="div" htmlClass="footer-legal-system col-m-6">
+            <block class="Magento\Backend\Block\Page\Footer" name="version" as="version"/>
+            <block class="Magento\Framework\View\Element\Template" name="report" as="report" template="Magento_Backend::page/report.phtml">
+               <arguments>
+                  <argument name="bugreport_url" xsi:type="string">https://github.com/magento/magento2/issues</argument>
+               </arguments>
+            </block>
+         </container>
+      </container>
+   </referenceContainer>
+   <referenceContainer name="after.body.start">
+      <block class="Magento\RequireJs\Block\Html\Head\Config" name="requirejs-config"/>
+      <block class="Magento\Translation\Block\Html\Head\Config" name="translate-config"/>
+      <block class="Magento\Translation\Block\Js" name="translate" template="Magento_Translation::translate.phtml"/>
+      <block class="Magento\Framework\View\Element\Js\Components" name="head.components" as="components" template="Magento_Backend::page/js/components.phtml"/>
+      <block class="Magento\Framework\View\Element\Html\Calendar" name="head.calendar" as="calendar" template="Magento_Backend::page/js/calendar.phtml"/>
+   </referenceContainer>
+</body>
+<body>
+   <referenceContainer name="notifications">
+      <block class="Magento\AdminNotification\Block\System\Messages" name="system_messages" as="system_messages" before="-" template="Magento_AdminNotification::system/messages.phtml"/>
+      <block class="Magento\AdminNotification\Block\System\Messages\UnreadMessagePopup" name="unread_system_messages" as="unread_system_messages" after="system_messages" template="Magento_AdminNotification::system/messages/popup.phtml"/>
+      <block class="Magento\AdminNotification\Block\Window" name="notification_window" as="notification_window" acl="Magento_AdminNotification::show_toolbar" template="notification/window.phtml"/>
+   </referenceContainer>
+   <referenceContainer name="header">
+      <block class="Magento\AdminNotification\Block\ToolbarEntry" name="notification.messages" before="user" template="toolbar_entry.phtml"/>
+   </referenceContainer>
+</body>
+<body>
+   <block class="Magento\Framework\Pricing\Render" name="product.price.render.default">
+      <arguments>
+         <argument name="price_render_handle" xsi:type="string">catalog_product_prices</argument>
+         <argument name="use_link_for_as_low_as" xsi:type="boolean">true</argument>
+      </arguments>
+   </block>
+</body>
+<body>
+   <referenceBlock name="footer">
+      <action method="setBugreportUrl">
+         <argument name="url" xsi:type="string">https://support.varien.com/</argument>
+      </action>
+   </referenceBlock>
+</body>
+<body>
+   <referenceContainer name="after.body.start">
+      <block class="Magento\Ui\Block\Logger" name="logger" template="Magento_Ui::logger.phtml"/>
+   </referenceContainer>
+</body>
+<body>
+   <referenceContainer name="notifications">
+      <block class="Magento\GoogleTagManager\Block\Adminhtml\Ga" name="google_analyticsuniversal" as="google_analyticsuniversal" template="Magento_GoogleTagManager::ga.phtml"/>
+   </referenceContainer>
+   <referenceContainer name="js">
+      <block ifconfig="google/analytics/active" class="Magento\Framework\View\Element\Template" template="Magento_GoogleTagManager::js.phtml" name="google.tagmanager.js"/>
+   </referenceContainer>
+</body>
+<head>
+   <css src="css/styles-old.css"/>
+   <css src="css/styles.css"/>
+</head>
+<body>
+   <referenceContainer name="root">
+      <container name="menu.wrapper" before="-" htmlTag="div" htmlClass="menu-wrapper"/>
+   </referenceContainer>
+   <referenceContainer name="header" htmlClass="page-header row">
+      <container name="header.inner.left" before="-" htmlTag="div" htmlClass="page-header-hgroup col-l-8 col-m-6"/>
+      <container name="header.inner.right" after="header.inner.left" htmlTag="div" htmlClass="page-header-actions col-l-4 col-m-6"/>
+   </referenceContainer>
+   <move element="page.menu" destination="menu.wrapper"/>
+   <move element="logo" before="-" destination="menu.wrapper"/>
+   <move element="page.title" before="-" destination="header.inner.left"/>
+   <move element="user" before="-" destination="header.inner.right"/>
+   <move element="notification.messages" after="user" destination="header.inner.right"/>
+   <move element="global.search" after="notification.messages" destination="header.inner.right"/>
+</body>
+<body>
+   <referenceBlock name="logo">
+      <arguments>
+         <argument name="edition" xsi:type="string">Enterprise</argument>
+      </arguments>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_items">
+      <block class="Magento\Sales\Block\Adminhtml\Items\Column\DefaultColumn" name="column_price" template="items/price/unit.phtml" group="column"/>
+      <block class="Magento\Sales\Block\Adminhtml\Items\Column\DefaultColumn" name="column_subtotal" template="items/price/row.phtml" group="column"/>
+      <block class="Magento\Sales\Block\Adminhtml\Items\Column\DefaultColumn" name="column_total" template="items/price/total.phtml" group="column"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_items">
+      <block class="Magento\Tax\Block\Adminhtml\Items\Price\Renderer" name="column_price" template="items/price/unit.phtml" group="column"/>
+      <block class="Magento\Tax\Block\Adminhtml\Items\Price\Renderer" name="column_subtotal" template="items/price/row.phtml" group="column"/>
+      <block class="Magento\Tax\Block\Adminhtml\Items\Price\Renderer" name="column_total" template="items/price/total.phtml" group="column"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_items">
+      <block class="Magento\Weee\Block\Adminhtml\Items\Price\Renderer" name="column_price" template="items/price/unit.phtml" group="column"/>
+      <block class="Magento\Weee\Block\Adminhtml\Items\Price\Renderer" name="column_subtotal" template="items/price/row.phtml" group="column"/>
+      <block class="Magento\Weee\Block\Adminhtml\Items\Price\Renderer" name="column_total" template="items/price/total.phtml" group="column"/>
+   </referenceBlock>
+</body>
+<update handle="sales_invoice_item_price"/>
+<body>
+   <referenceContainer name="admin.scope.col.wrap" htmlClass="admin__old"/>
+   <referenceContainer name="content">
+      <block class="Magento\Sales\Block\Adminhtml\Order\Invoice\View" name="sales_invoice_view">
+         <block class="Magento\Sales\Block\Adminhtml\Order\Invoice\View\Form" name="form" template="order/invoice/view/form.phtml">
+            <block class="Magento\Sales\Block\Adminhtml\Order\View\Info" name="order_info" template="order/view/info.phtml"/>
+            <block class="Magento\Sales\Block\Adminhtml\Order\Payment" name="order_payment"/>
+            <block class="Magento\Sales\Block\Adminhtml\Order\Invoice\View\Items" name="invoice_items" template="order/invoice/view/items.phtml">
+               <block class="Magento\Sales\Block\Adminhtml\Items\Renderer\DefaultRenderer" as="default" template="order/invoice/view/items/renderer/default.phtml"/>
+               <block class="Magento\Sales\Block\Adminhtml\Items\Column\Qty" name="column_qty" template="items/column/qty.phtml" group="column"/>
+               <block class="Magento\Sales\Block\Adminhtml\Items\Column\Name" name="column_name" template="items/column/name.phtml" group="column"/>
+               <block class="Magento\Framework\View\Element\Text\ListText" name="order_item_extra_info"/>
+            </block>
+            <block class="Magento\Sales\Block\Adminhtml\Order\Comments\View" name="order_comments" template="order/comments/view.phtml">
+               <action method="setParentType">
+                  <argument name="type" xsi:type="string">invoice</argument>
+               </action>
+            </block>
+            <block class="Magento\Sales\Block\Adminhtml\Order\Invoice\Totals" name="invoice_totals" template="order/totals.phtml">
+               <block class="Magento\Sales\Block\Adminhtml\Order\Totals\Tax" name="tax" template="order/totals/tax.phtml"/>
+            </block>
+         </block>
+      </block>
+   </referenceContainer>
+</body>
+<body>
+   <referenceBlock name="invoice_totals">
+      <block class="Magento\Sales\Block\Adminhtml\Order\Totals\Item" name="customerbalance" template="Magento_CustomerBalance::sales/order/totals/customerbalance.phtml" after="-">
+         <action method="setSourceField">
+            <argument name="value" xsi:type="string">customer_balance_amount</argument>
+         </action>
+         <action method="setLabel">
+            <argument name="value" xsi:type="string">Store Credit</argument>
+         </action>
+      </block>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_items">
+      <block class="Magento\Downloadable\Block\Adminhtml\Sales\Items\Column\Downloadable\Name" name="column_name_downloadable" template="sales/items/column/downloadable/invoice/name.phtml" group="column"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="order_items">
+      <block class="Magento\GiftCard\Block\Adminhtml\Sales\Items\Column\Name\Giftcard" name="column_name_giftcard" template="Magento_Sales::items/column/name.phtml" group="column"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_totals">
+      <block class="Magento\Sales\Block\Adminhtml\Order\Totals\Item" name="giftcardaccount" template="Magento_GiftCardAccount::sales/invoice/totals/giftcardaccount.phtml"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_totals">
+      <block class="Magento\GiftWrapping\Block\Adminhtml\Sales\Totals" name="giftwrapping"/>
+   </referenceBlock>
+   <referenceBlock name="order_item_extra_info">
+      <block class="Magento\GiftWrapping\Block\Adminhtml\Sales\Order\View\Items" name="giftwrapping_extra_info" template="sales/invoice/view/renderer.phtml" before="-"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_items">
+      <block class="Magento\GroupedProduct\Block\Adminhtml\Items\Column\Name\Grouped" name="column_name_grouped" template="Magento_Sales::items/column/name.phtml" group="column"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_items">
+      <block class="Magento\Bundle\Block\Adminhtml\Sales\Order\Items\Renderer" as="bundle" template="sales/invoice/view/items/renderer.phtml"/>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_totals">
+      <block class="Magento\Sales\Block\Adminhtml\Order\Totals\Item" name="reward_points" template="Magento_Reward::sales/order/total.phtml">
+         <action method="setBeforeCondition">
+            <argument name="condition" xsi:type="string">customerbalance</argument>
+         </action>
+      </block>
+   </referenceBlock>
+</body>
+<body>
+   <referenceBlock name="invoice_totals">
+      <block class="Magento\Weee\Block\Sales\Order\Totals" name="weee_inv_totals">
+         <action method="setBeforeCondition">
+            <argument name="condition" xsi:type="string">tax</argument>
+         </action>
+      </block>
+   </referenceBlock>
+</body>
